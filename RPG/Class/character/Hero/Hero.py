@@ -1,13 +1,19 @@
 from dataclasses import dataclass
-from RPG.Class.character.Character import Character, EndOfFight
+from RPG.Class.character.Character import Character
+from RPG.Exceptions.FightExceptions import EndOfFight, GameOver
 
 
 @dataclass
 class Hero(Character):
     is_player: bool = False
-    xp_point: int = 1
+    xp_point: int = 0
+    gold_value: int = 0
 
     def on_death(self):
-        raise EndOfFight(self)
-        super(Hero, self).on_death()
-        print("Game Over")
+        if self.is_player:
+            raise GameOver()
+        else:
+            raise EndOfFight(self)
+
+    # def get_reward(self, reward: Reward):
+    #     return
