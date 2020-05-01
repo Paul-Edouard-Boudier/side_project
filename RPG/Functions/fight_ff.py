@@ -17,7 +17,6 @@ def fight(attacker: Character, defender: Character) -> None:
             display_fight(attacker, defender)
     except EndOfFight as e:
         end_of_fight(e.character)
-        print('reward')
         # print(hero_one)
         # display_fight_reward(e.character.get_reward())
     except GameOver:

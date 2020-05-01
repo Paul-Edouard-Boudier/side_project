@@ -3,9 +3,9 @@ import random
 from typing import Union
 
 
-def calc_attack(attacker: "Character", receiver: "Character") -> Union[int, str]:
-    if attacker_has_hit(attacker.dex_point, receiver.dex_point):
-        damage = attacker.attk_point - receiver.def_point
+def calc_attack(attacker: 'Character', receiver: 'Character') -> Union[int, str]:
+    if attacker_has_hit(attacker.dexterity_point, receiver. dexterity_point):
+        damage = attacker.attack_point - receiver.defense_point
         damage_deal = (damage, 0)[damage < 0]
         return damage_deal
     else:
@@ -23,7 +23,7 @@ def attacker_has_hit(att_dex: int, rec_dex: int) -> bool:
     return i < random.randint(1, 20)
 
 
-def deal_damage(damaged_character: "Character", damage_value: int) -> None:
+def deal_damage(damaged_character: 'Character', damage_value: int) -> None:
     damaged_character.life_point -= damage_value
     if damaged_character.life_point <= 0:
         damaged_character.on_death()
