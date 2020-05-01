@@ -3,7 +3,6 @@ from random import randint
 from RPG.Class.Player import Player
 from RPG.Class.character.Hero.Hero import Hero
 from RPG.Class.character.Monster.Monster import Monster
-from RPG.Functions.display_fight_ff import display_fight
 from RPG.Functions.fight_ff import fight
 
 if __name__ == "__main__":
