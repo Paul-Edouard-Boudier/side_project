@@ -19,3 +19,6 @@ def singleton(class_):
 @dataclass()
 class Player:
     hero: Hero = None
+
+    def get_player_input(self):
+        return input()

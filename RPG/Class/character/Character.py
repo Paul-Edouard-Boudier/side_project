@@ -15,6 +15,7 @@ class Character:
     is_in_fight: bool = False
     fighting_with: Character = None
 
+    life_point: int = 0
     maximum_life: int = 10
     attack_point: int = 1
     defense_point: int = 1
@@ -62,3 +63,9 @@ class Character:
                 # Can't have negative values for stats
                 if attr + v > 0:
                     setattr(self, k, attr+v)
+
+    def on_heal(self, healing_point: int):
+        if (x := healing_point + self.life_point) < self.maximum_life:
+            self.life_point = x
+        else:
+            self.life_point = self.maximum_life

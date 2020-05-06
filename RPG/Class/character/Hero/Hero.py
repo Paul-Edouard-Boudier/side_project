@@ -7,6 +7,7 @@ from RPG.Exceptions.FightExceptions import EndOfFight, GameOver
 class Hero(Character):
     is_player: bool = False
     hero_gold_value: int = 0
+    life_potion_count: int = 1
 
     hero_actual_xp_point: int = 0
     hero_xp_to_next_level: int = 100
@@ -38,3 +39,8 @@ class Hero(Character):
             self.hero_actual_xp_point = x
         else:
             self.hero_actual_xp_point = new_value
+
+    def on_use_life_potion(self):
+        if self.life_potion_count:
+            self.life_potion_count -= 1
+            self.on_heal(20)

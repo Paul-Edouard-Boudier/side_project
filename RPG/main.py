@@ -1,6 +1,7 @@
 from random import randint
 
-from RPG.Class.Player import Player
+from RPG.Class.NPC.Merchant.Merchant import Merchant
+from RPG.Class.Player.Player import Player
 from RPG.Class.character.Hero.Hero import Hero
 from RPG.Class.character.Monster.Monster import Monster
 from RPG.Functions.fight_ff import fight
@@ -22,12 +23,17 @@ if __name__ == "__main__":
 
     x = 1
     while True:
-        name = 'monster_' + str(x)
-        monster = Monster(
-            name=name, maximum_life=randint(11, 22),
-            attack_point=10 + x, defense_point=x, dexterity_point=x
-        )
-        fight(Player().hero, monster)
+        if x % 4 == 0:
+            merchant = Merchant()
+            merchant.encounter_handler(Player().hero)
+        else:
+            name = 'monster_' + str(x)
+            monster = Monster(
+                name=name, maximum_life=randint(11, 22),
+                attack_point=10 + x, defense_point=x, dexterity_point=x
+            )
+            fight(Player().hero, monster)
         x += 1
 
     print('Vous avez gagné')
+

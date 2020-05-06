@@ -1,9 +1,8 @@
-from RPG.Class.Player import Player
+from RPG.Class.Player.Player import Player
 from RPG.Class.character.Character import Character
 from RPG.Class.character.Hero.Hero import Hero
-from RPG.Class.character.Monster.Monster import Monster
 from RPG.Exceptions.FightExceptions import EndOfFight, GameOver
-from RPG.Functions.display_fight_ff import display_fight, display_end_of_fight
+from RPG.Display.display_fight_ff import display_fight, display_end_of_fight
 
 
 def fight(attacker: Character, defender: Character) -> None:
@@ -33,9 +32,12 @@ def fight_turn(fighter: Character) -> None:
         other_turn(fighter)
 
 
-def player_turn(player: Hero) -> None:
-    if input() == "1":
-        player.on_attack(player.fighting_with)
+def player_turn(player_hero: Hero) -> None:
+    player_input = Player().get_player_input()
+    if player_input == "1":
+        player_hero.on_attack(player_hero.fighting_with)
+    elif player_input == "2":
+        player_hero.on_use_life_potion()
 
 
 def other_turn(other: Character) -> None:
